@@ -91,7 +91,7 @@ def plot_AIF():
     axs[0,0].set_xlim(0, 50)
     axs[0,0].set_ylim(0, 1.1)
 
-    # Top Right: Burst firing (fixed continuity)
+    # Top Right: Burst firing 
     t, v, a, _ = simulate_aif(I=0.1, omega=1/75, beta=0, vth=1, vR=0.2, k=2/75, t_end=500, dt=0.001)
     axs[0,1].plot(t, v, 'k', drawstyle='steps-post')
     axs[0,1].set_title('Burst Firing v vs t at ($\\omega=1/75$)')
@@ -103,7 +103,7 @@ def plot_AIF():
     # Bottom Left: Phase plane tonic
     t, v, a, _ = simulate_aif(I=0.1, omega=1/3, beta=0, vth=1, vR=0.2, k=0.25, t_end=200)
     mask = t > 20
-    axs[1,0].plot(v[mask], a[mask], 'g')  # Corrected to use actual a values
+    axs[1,0].plot(v[mask], a[mask], 'g')  
     axs[1,0].axhline(0, color='r')
     axs[1,0].plot(np.linspace(-1,1,100), np.abs(np.linspace(-1,1,100)) + 0.1, 'r')
     axs[1,0].axvline(1, color='b', ls='--')
@@ -115,7 +115,7 @@ def plot_AIF():
     # Bottom Right: Phase plane burst
     t, v, a, _ = simulate_aif(I=0.1, omega=1/75, beta=0, vth=1, vR=0.2, k=2/75, t_end=800, dt=0.001)
     mask = (t > 200) & (t < 750)
-    axs[1,1].plot(v[mask], a[mask], 'g')  # Corrected to use actual a values
+    axs[1,1].plot(v[mask], a[mask], 'g')  
     axs[1,1].axhline(0, color='r')
     axs[1,1].plot(np.linspace(-1,1,100), np.abs(np.linspace(-1,1,100)) + 0.1, 'r')
     axs[1,1].axvline(1, color='b', ls='--')
@@ -195,6 +195,9 @@ if __name__ == '__main__':
     if args.spike_vs_k: plot_spike_vs_k()
     if args.poincare_tonic: plot_poincare_tonic()
     if args.poincare_burst: plot_poincare_burst()
+
+    #_______________end of the code___________________________________________________
+    
 #import numpy as np
 # import matplotlib.pyplot as plt
 # from scipy.integrate import solve_ivp
